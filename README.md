@@ -7,6 +7,6 @@ I will update this repo as actively as I can.
 
 # Changelog
 
-* 10.10.2017 Added kernel driver code. It should work out the box. I used VS2015 and it's KMDF tools to dev / compile it.
+* 10.10.2017 Added kernel driver code. It should work out the box. I used VS2015 and its KMDF tools to dev / compile it.
 
 * 9.10.2017 Added the usermode app barebones. It does not work or compile yet. I will need to work on it for some more hours first.
