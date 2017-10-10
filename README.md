@@ -5,7 +5,12 @@ This is just my little map hack that I was using for some 300+ hours with no ban
 I will update this repo as actively as I can.
 
 YouTube video:
+
 https://www.youtube.com/watch?v=fxbGeqOEhq4
+
+Imgur picture of the web map:
+
+https://imgur.com/y6Isd9F
 
 
 # Changelog
