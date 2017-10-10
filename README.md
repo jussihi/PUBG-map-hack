@@ -15,6 +15,8 @@ https://imgur.com/y6Isd9F
 
 # Changelog
 
+* 10.10.2017 Added a barebone map javascript code. Problem is that much of it is not originally by me, so I stripped it down to very minimum version. If you want to develop it further, please be my guest.
+
 * 10.10.2017 Added kernel driver code. It should work out the box. I used VS2015 and its KMDF tools to dev / compile it.
 
 * 9.10.2017 Added the usermode app barebones. It does not work or compile yet. I will need to work on it for some more hours first.
