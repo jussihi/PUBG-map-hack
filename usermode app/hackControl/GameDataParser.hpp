@@ -2,11 +2,12 @@
 #include "KReader.hpp"
 #include "CURLWrapper.hpp"
 #include "Types.hpp"
+#include <deque>
 
 class GameDataParser
 {
 public:
-	GameDataParser() 
+	GameDataParser()
 	{
 		m_kReader = new KReader;
 		m_CURL = new CURLWrapper;
@@ -34,6 +35,16 @@ public:
 			m_CURL->sendData(data.dump());
 		}
 
+	}
+
+	int64_t getPUBase()
+	{
+		return m_kReader->getPUBase();
+	}
+
+	int64_t readPUBase()
+	{
+		return m_kReader->readPUBase();
 	}
 	
 
@@ -197,6 +208,7 @@ private:
 
 	/*
 	 * Local variables
+	 * These are updated once every read loop.
 	 */
 	int64_t m_UWorld;
 	int64_t m_gameInstance;
@@ -208,11 +220,19 @@ private:
 	int64_t m_PWorld;
 	int64_t m_ULevel;
 	int64_t m_playerCount;
-
 	Vector3 m_localPlayerPosition;
 	int64_t m_localPlayerBasePointer;
-
 	int32_t m_localTeam;
-
 	int64_t m_AActorPtr;
+
+	/*
+	 * Global IDs that are found from the game
+	 * These containers are used to help the 
+	 * maintaining of systematic ID handling and 
+	 * storing.
+	 */
+	std::deque<int32_t> allIDs;
+
+	std::vector<int32_t> playerIDs;
+	std::vector<int32_t> vehicleIDs;
 };

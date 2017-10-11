@@ -1,13 +1,26 @@
 #pragma once
 
-#include "Types.hpp"
 #include <string>
+#include <exception>
+#include "Types.hpp"
+
 
 class KReader
 {
 public:
-	KReader() : m_hDriver(0), m_PUBase(0) {}
-	~KReader() {}
+	KReader() : m_hDriver(0), m_PUBase(0)
+	{
+		m_hDriver = CreateFileA("\\\\.\\MapHackInterface", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+		if (!m_hDriver)
+		{
+			throw std::runtime_error("Could not open the driver handle!");
+		}
+
+	}
+	~KReader()
+	{
+		CloseHandle(m_hDriver);
+	}
 
 	/*
 	 * CLASS METHODS
@@ -36,9 +49,9 @@ public:
 	{
 		T writeMe;
 
-		if (ProtoMsg == PROTO_NORMAL_READ)
+		if (w_protoMsg == PROTO_NORMAL_READ)
 		{
-			readStruct rStruct{ (uint64_t)&writeMe, (uint64_t)read, sizeof(T), (uint32_t)GetCurrentProcessId(), 0, TRUE, 0 };
+			readStruct rStruct{ (uint64_t)&writeMe, (uint64_t)w_read, sizeof(T), (uint32_t)GetCurrentProcessId(), 0, TRUE, 0 };
 			// send the struct to IOCTL
 			WriteFile(m_hDriver, (LPCVOID)&rStruct, sizeof(ReadStruct), NULL, NULL);
 		}
@@ -115,7 +128,13 @@ public:
 		return m_PUBase;
 	}
 
+	bool isReading() const
+	{
+		return m_readActive;
+	}
+
 private:
 	HANDLE m_hDriver;
 	int64_t m_PUBase;
+	bool m_readActive;
 };

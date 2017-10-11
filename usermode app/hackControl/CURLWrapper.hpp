@@ -2,6 +2,7 @@
 #include <curl/curl.h>
 #include "json.hpp"
 #include "Types.hpp"
+#include <iostream>
 
 class CURLWrapper
 {
@@ -17,7 +18,7 @@ public:
 	// destructor of this wrapper
 	~CURLWrapper()
 	{
-
+		curl_easy_cleanup(m_curl);
 	}
 
 	bool getReadyState()
@@ -55,6 +56,7 @@ public:
 		}
 		catch (std::exception& e)
 		{
+			std::cout << e.what() << std::endl;
 			return -1;
 		}
 	}
