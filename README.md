@@ -19,10 +19,14 @@ The main principle of this hack is that, the insides of the "usermode app" and "
 
 You can pretty much upload the "online map" insides to any web host. Just remember to update the firebase API keys etc. beforehand, otherwise the map won't simply work.
 
+** REMEMBER TO SET UP THE FIREBASE DATABASE AS "PUBLIC" (so everyone can access/write to it) ** More info in the online map folder readme.
+
 This makes it possible to cheat with squads; only one member of the squad must run the cheat program and kernel driver, but everyone can open the map with their own device/browser of choise.
 
 
 # Changelog
+
+* 12.10.2017 Updated readme
 
 * 10.10.2017 Updated the usermode app. It should work now. The whole solution should work now.
 
