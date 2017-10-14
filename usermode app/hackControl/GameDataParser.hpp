@@ -187,7 +187,7 @@ private:
 		m_localPlayerState = m_kReader->readType<int64_t>(m_localPawn + 0x3C0, PROTO_NORMAL_READ);
 		m_PWorld = m_kReader->readType<int64_t>(m_viewportclient + 0x80, PROTO_NORMAL_READ);
 		m_ULevel = m_kReader->readType<int64_t>(m_PWorld + 0x30, PROTO_NORMAL_READ);
-		m_playerCount = m_kReader->readType<int64_t>(m_ULevel + 0xA8, PROTO_NORMAL_READ);
+		m_playerCount = m_kReader->readType<int32_t>(m_ULevel + 0xA8, PROTO_NORMAL_READ);
 
 		m_localPlayerPosition = m_kReader->readVec(m_localPlayer + 0x70, PROTO_NORMAL_READ);
 		m_localPlayerBasePointer = m_kReader->readType<int64_t>(m_localPlayer, PROTO_NORMAL_READ);
