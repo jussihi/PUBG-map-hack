@@ -78,7 +78,7 @@ private:
 				w_data["players"].emplace_back(json::object({ { "t", actorTeam },{ "x", actorLocation.X },{ "y", actorLocation.Y }/*,{ "z", actorLocation.Z }*/ }));
 			}
 
-			else if (actorGName == "DroppedItemGroup" || actorGName == "DroppedItemInteractionComponent")
+			if (actorGName == "DroppedItemGroup" || actorGName == "DroppedItemInteractionComponent")
 			{
 				int64_t rootCmpPtr = m_kReader->readType<int64_t>(curActor + 0x180, PROTO_NORMAL_READ);
 				int64_t playerState = m_kReader->readType<int64_t>(curActor + 0x3C0, PROTO_NORMAL_READ);
@@ -161,7 +161,7 @@ private:
 			}
 			else if (std::find(vehicleIDs.begin(), vehicleIDs.end(), curActorID) != vehicleIDs.end())
 			{
-				// tästä alaspäin voi tehdä if-lohkoissa
+				// tÃ¤stÃ¤ alaspÃ¤in voi tehdÃ¤ if-lohkoissa
 				int64_t rootCmpPtr = m_kReader->readType<int64_t>(curActor + 0x180, PROTO_NORMAL_READ);
 				Vector3 actorLocation = m_kReader->readVec(rootCmpPtr + 0x1A0, PROTO_NORMAL_READ);
 
