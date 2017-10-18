@@ -33,6 +33,8 @@ This makes it possible to cheat with squads; only one member of the squad must r
 
 # Changelog
 
+* 17.10.2017 Updated with new offsets, also added simple build instructions.
+
 * 12.10.2017 Updated readme
 
 * 10.10.2017 Updated the usermode app. It should work now. The whole solution should work now.
