@@ -23,6 +23,13 @@ You can pretty much upload the "online map" insides to any web host. Just rememb
 
 This makes it possible to cheat with squads; only one member of the squad must run the cheat program and kernel driver, but everyone can open the map with their own device/browser of choise.
 
+# BUILD INSTRUCTIONS
+
+ - Build kernel driver with Visual Studio 2015. This installation should have WDK included.
+ - Build usermode app with Visual Studio 2017. Include the CURL header folder and json folder, also link against the CURL library
+ - Upload map, change the firebase values to correspond yours, make this change also in the CURLWrapper.hpp in the usermode app
+ - Set firebase as public, see online map folder for more specific instructions.
+
 
 # Changelog
 
