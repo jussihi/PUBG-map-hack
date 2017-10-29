@@ -55,7 +55,7 @@ private:
 	 */
 	void readPlayers(json& w_data)
 	{
-		for (int i = 0; i < m_playerCount; i++)
+		for (int i = 0; i < m_actorCount; i++)
 		{
 			// read the position of Player
 			int64_t curActor = m_kReader->readType<int64_t>(m_AActorPtr + (i * 0x8), PROTO_NORMAL_READ);
@@ -178,7 +178,7 @@ private:
 
 	void readLocals()
 	{
-		m_UWorld = m_kReader->readType<int64_t>(m_kReader->getPUBase() + 0x37E4918, PROTO_NORMAL_READ);
+		m_UWorld = m_kReader->readType<int64_t>(m_kReader->getPUBase() + 0x37E5988, PROTO_NORMAL_READ);
 		m_gameInstance = m_kReader->readType<int64_t>(m_UWorld + 0x140, PROTO_NORMAL_READ);
 		m_ULocalPlayer = m_kReader->readType<int64_t>(m_gameInstance + 0x38, PROTO_NORMAL_READ);
 		m_localPlayer = m_kReader->readType<int64_t>(m_ULocalPlayer, PROTO_NORMAL_READ);
@@ -187,7 +187,7 @@ private:
 		m_localPlayerState = m_kReader->readType<int64_t>(m_localPawn + 0x3C0, PROTO_NORMAL_READ);
 		m_PWorld = m_kReader->readType<int64_t>(m_viewportclient + 0x80, PROTO_NORMAL_READ);
 		m_ULevel = m_kReader->readType<int64_t>(m_PWorld + 0x30, PROTO_NORMAL_READ);
-		m_playerCount = m_kReader->readType<int32_t>(m_ULevel + 0xA8, PROTO_NORMAL_READ);
+		m_actorCount = m_kReader->readType<int32_t>(m_ULevel + 0xA8, PROTO_NORMAL_READ);
 
 		m_localPlayerPosition = m_kReader->readVec(m_localPlayer + 0x70, PROTO_NORMAL_READ);
 		m_localPlayerBasePointer = m_kReader->readType<int64_t>(m_localPlayer, PROTO_NORMAL_READ);
@@ -219,7 +219,7 @@ private:
 	int64_t m_localPlayerState;
 	int64_t m_PWorld;
 	int64_t m_ULevel;
-	int64_t m_playerCount;
+	int64_t m_actorCount;
 	Vector3 m_localPlayerPosition;
 	int64_t m_localPlayerBasePointer;
 	int32_t m_localTeam;
