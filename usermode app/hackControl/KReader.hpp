@@ -98,7 +98,7 @@ public:
 	// returns a string, if this method fails, returns "FAIL"
 	std::string getGNameFromId(const int32_t& w_id) const
 	{
-		int64_t GNames = readType<int64_t>(m_PUBase + 0x36E8790, PROTO_NORMAL_READ);
+		int64_t GNames = readType<int64_t>(m_PUBase + 0x36E9790, PROTO_NORMAL_READ);
 		int64_t singleNameChunk = readType<int64_t>(GNames + (w_id / 0x4000) * 8, PROTO_NORMAL_READ);
 		int64_t singleNamePtr = readType<int64_t>(singleNameChunk + 8 * (w_id % 0x4000), PROTO_NORMAL_READ);
 
