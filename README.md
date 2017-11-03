@@ -23,6 +23,8 @@ You can pretty much upload the "online map" insides to any web host. Just rememb
 
 This makes it possible to cheat with squads; only one member of the squad must run the cheat program and kernel driver, but everyone can open the map with their own device/browser of choise.
 
+*If you don't want to (or can't) use the firebase, there is also an [alternative version of the map without firebase interface](https://github.com/nakating/PUBG-maphack-map) made by nakating.*
+
 # BUILD INSTRUCTIONS
 
  - Build kernel driver with Visual Studio 2015. This installation should have WDK included.
@@ -32,6 +34,8 @@ This makes it possible to cheat with squads; only one member of the squad must r
 
 
 # Changelog
+
+* 3.11.2017 Updated readme with [nakating](https://github.com/nakating)'s version of the web interface.
 
 * 17.10.2017 Updated with new offsets, also added simple build instructions.
 
