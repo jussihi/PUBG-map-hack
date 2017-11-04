@@ -219,7 +219,7 @@ private:
 	int64_t m_localPlayerState;
 	int64_t m_PWorld;
 	int64_t m_ULevel;
-	int64_t m_actorCount;
+	int32_t m_actorCount;
 	Vector3 m_localPlayerPosition;
 	int64_t m_localPlayerBasePointer;
 	int32_t m_localTeam;

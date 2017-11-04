@@ -42,6 +42,8 @@ DWORD64 GetSectionBaseAddress(HANDLE w_pid)
 
 VOID Unload(PDRIVER_OBJECT  DriverObject)
 {
+	PsRemoveLoadImageNotifyRoutine((PLOAD_IMAGE_NOTIFY_ROUTINE)NotifyImageLoadCallback);
+
 	UNICODE_STRING usDosDeviceName;
 
 	RtlInitUnicodeString(&usDosDeviceName, L"\\DosDevices\\MapHackInterface");
