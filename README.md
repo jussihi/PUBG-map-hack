@@ -31,9 +31,15 @@ This makes it possible to cheat with squads; only one member of the squad must r
  - Build usermode app with Visual Studio 2017. Include the CURL header folder and json folder, also link against the CURL library
  - Upload map, change the firebase values to correspond yours, make this change also in the CURLWrapper.hpp in the usermode app
  - Set firebase as public, see online map folder for more specific instructions.
+ 
+ # Known issues
+ 
+ * Kernel interface in the usermode app doesn't seem to be working on Windows 7. I could invest this issue, but I'm lacking a Windows 7 machine right now.
 
 
 # Changelog
+
+* 15.11.2017 Updated readme with Windows 7 driver issue, updated offsets.
 
 * 3.11.2017 Updated readme with [nakating](https://github.com/nakating)'s version of the web interface.
 
