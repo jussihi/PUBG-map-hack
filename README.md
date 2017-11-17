@@ -1,12 +1,6 @@
 # PUBG-map-hack
 
-This is just my little map hack that I was using for some 300+ hours with no bans whatsoever from BE. I must say BE is pretty uncompetent AC after all, if you just keep yourself at the ring0.
-
-I will update this repo as actively as I can.
-
-YouTube video:
-
-https://www.youtube.com/watch?v=fxbGeqOEhq4
+A little map hack program for PUBG game that shows players' positions on a HTML map.
 
 Imgur picture of the web map:
 
@@ -17,7 +11,7 @@ https://imgur.com/y6Isd9F
 
 The main principle of this hack is that, the insides of the "usermode app" and "kernel driver" folder are being run on the same machine as the game itself. The usermode app communicates with both the web interface and kernel driver. The web map gets the data from the google's firebase app. So the usermode app updates the firebase app and the web map shows the information stored inside the firebase database.
 
-You can pretty much upload the "online map" insides to any web host. Just remember to update the firebase API keys etc. beforehand, otherwise the map won't simply work.
+You can pretty much upload the content of "online map" folder to any web host. Just remember to update the firebase API keys etc. beforehand, otherwise the map won't simply work.
 
 **REMEMBER TO SET UP THE FIREBASE DATABASE AS "PUBLIC" (so everyone can access/write to it)** More info in the online map folder readme.
 
@@ -38,6 +32,8 @@ This makes it possible to cheat with squads; only one member of the squad must r
 
 
 # Changelog
+
+* 17.11.2017 Update readme
 
 * 15.11.2017 Updated readme with Windows 7 driver issue, updated offsets.
 
