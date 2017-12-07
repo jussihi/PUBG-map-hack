@@ -3,6 +3,7 @@
 #include "CURLWrapper.hpp"
 #include "Types.hpp"
 #include <deque>
+#include <nmmintrin.h>
 
 class GameDataParser
 {
@@ -53,12 +54,25 @@ private:
 	/*
 	 * PRIVATE CLASS FUNCTIONS
 	 */
+	struct TSLEncryptDataObj
+	{
+		uint64_t ptrs[0x2B];
+		uint16_t enc_index;
+		byte  unk2[0x6];
+		uint16_t enc_xor;
+		byte  unk3[0x6];
+	};
+	
 	void readPlayers(json& w_data)
 	{
 		for (int i = 0; i < m_actorCount; i++)
 		{
 			// read the position of Player
-			int64_t curActor = m_kReader->readType<int64_t>(m_AActorPtr + (i * 0x8), PROTO_NORMAL_READ);
+			auto encrypted_actor = m_kReader->readType<TSLEncryptDataObj>(m_AActorPtr + (i * sizeof(TSLEncryptDataObj)), PROTO_NORMAL_READ);
+    			uint16_t decoded_xor = encrypted_actor.enc_xor ^ 0xCBAC;
+			uint16_t decoded_index = _mm_crc32_u32(0x19D5D75Fu, encrypted_actor.enc_index ^ 0x3185721C) % 0x2B;
+			int64_t curActor = decoded_xor ^ encrypted_actor.ptrs[decoded_index];
+			//int64_t curActor = m_kReader->readType<int64_t>(m_AActorPtr + (i * 0x8), PROTO_NORMAL_READ);
 			int32_t curActorID = m_kReader->readType<int32_t>(curActor + 0x0018, PROTO_NORMAL_READ);
 			std::string actorGName = m_kReader->getGNameFromId(curActorID);
 
@@ -178,7 +192,7 @@ private:
 
 	void readLocals()
 	{
-		m_UWorld = m_kReader->readType<int64_t>(m_kReader->getPUBase() + 0x3CA94A8, PROTO_NORMAL_READ);
+		m_UWorld = m_kReader->readType<int64_t>(m_kReader->getPUBase() + 0x3A5D218, PROTO_NORMAL_READ);
 		m_gameInstance = m_kReader->readType<int64_t>(m_UWorld + 0x140, PROTO_NORMAL_READ);
 		m_ULocalPlayer = m_kReader->readType<int64_t>(m_gameInstance + 0x38, PROTO_NORMAL_READ);
 		m_localPlayer = m_kReader->readType<int64_t>(m_ULocalPlayer, PROTO_NORMAL_READ);
