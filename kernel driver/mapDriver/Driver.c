@@ -3,6 +3,7 @@
 
 #include "Types.h"
 
+// change PLOAD_IMAGE_NOTIFY_ROUTINE to PCREATE_PROCESS_NOTIFY_ROUTINE_EX if you are using Windows 7
 PLOAD_IMAGE_NOTIFY_ROUTINE NotifyImageLoadCallback(PUNICODE_STRING w_FullImageName, HANDLE w_ProcessId, PIMAGE_INFO w_ImageInfo)
 {
 	if (wcsstr(w_FullImageName->Buffer, L"\\TslGame\\Binaries\\Win64\\TslGame.exe"))
