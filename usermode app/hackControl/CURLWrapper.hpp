@@ -32,7 +32,7 @@ public:
 		return w_size * w_nmemb;
 	}
 
-	int sendData(std::string& w_data)
+	void sendData(std::string& w_data)
 	{
 		try
 		{
@@ -57,7 +57,6 @@ public:
 		catch (std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
-			return -1;
 		}
 	}
 
