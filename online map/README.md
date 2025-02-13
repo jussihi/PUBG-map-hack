@@ -10,5 +10,6 @@ Set the rules at firebase as:
       "rules": {
         ".read": true,
         ".write": true
+        ".read" : true
       }
     }
