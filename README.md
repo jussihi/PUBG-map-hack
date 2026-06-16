@@ -1,4 +1,4 @@
-# PUBG-map-hack
+u# PUBG-map-hack
 
 A little map hack program for PUBG game that shows players' positions on a HTML map.
 
